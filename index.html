@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+    <h2>Welcome to the Personality Prediction System</h2>
+    
+    <div class="button-container">
+        <button class="action-button" onclick="window.location.href='/submit_cv'">Continue as Candidate</button>
+    </div>
+    
+    <div class="button-container">
+        <!-- Admin login button, we can implement later -->
+        <a class="action-button" href="{{ url_for('admin_dashboard') }}">Admin Login</a>
+    </div>
+
+    <style>
+        /* Center the content and buttons */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .button-container {
+            margin: 20px;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #45a049;
+        }
+
+        .action-button:focus {
+            outline: none;
+        }
+    </style>
+</body>
+
+</html>

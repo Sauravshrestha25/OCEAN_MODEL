@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+    <h1>User Details for : {{ user.name }}</h1>
+
+    <h2>CV Information</h2>
+<p><strong>Degree:</strong> {{ user.degree[0] }}</p>
+<p><strong>University:</strong> {{ user.university[0] }}</p>
+<p><strong>Graduation Year:</strong> {{ user.grad_year[0] }}</p>
+<p><strong>Job Title:</strong> {{ user.job_title[0] }}</p>
+<p><strong>Company:</strong> {{ user.company[0] }}</p>
+<p><strong>Duration:</strong> {{ user.duration[0] }}</p>
+<p><strong>Projects:</strong> {{ user.projects[0] }}</p>
+<p><strong>Project Description:</strong> {{ user.project_description[0] }}</p>
+<p><strong>Certifications:</strong> {{ user.certifications[0] }}</p>
+<p><strong>Certification Institution:</strong> {{ user.certification_institution[0] }}</p>
+<p><strong>Skills:</strong> {{ user.skills }}</p>
+
+<p><strong>Personal Description:</strong> {{ user.personal_description }}</p>
+    <h2>Predicted Personality</h2>
+    <ul>
+        {% for trait, value in user.predicted_personality.items() %}
+            <li><strong>{{ trait }}:</strong> {{ '%.4f' % value }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Personality Traits Bar Graph</h3>
+    <img src="data:image/png;base64,{{ graph }}" alt="Predicted Personality Traits Graph" />
+
+    <h3>Highest Trait: {{highest_trait}}</h3>
+    <p>{{ explanation }}</p>
+
+    <h3><a href="{{ url_for('user_details_by_email', user_email=user['email']) }}?show_responses=true">Show Responses</a></h3>
+
+
+    {% if request.args.get('show_responses') == 'true' %}
+    <h3>Responses</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for question, answer in user.responses.items() %}
+            <tr>
+                <td>{{ question }}</td>
+                <td>{{ answer }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+</body>
+</html>

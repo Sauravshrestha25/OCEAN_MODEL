@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+    <h2>Fill out your CV Information</h2>
+    <form action="/submit_cv" method="POST">
+        <!-- User Personal Information -->
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required>
+
+        <!-- Education Section -->
+        <div id="education-section">
+            <label>Education:</label>
+            <div class="dynamic-section">
+                <input type="text" name="degree[]" placeholder="Degree" required>
+                <input type="text" name="university[]" placeholder="University" required>
+                <input type="number" name="grad_year[]" placeholder="Graduation Year" required>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experience-section">
+            <label>Experience:</label>
+            <div class="dynamic-section">
+                <input type="text" name="job_title[]" placeholder="Job Title" required>
+                <input type="text" name="company[]" placeholder="Company" required>
+                <input type="text" name="duration[]" placeholder="Duration" required>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects-section">
+            <label>Projects:</label>
+            <div class="dynamic-section">
+                <input type="text" name="projects[]" placeholder="Project Title" required>
+                <input type="text" name="project_description[]" placeholder="Project Description" required>
+            </div>
+        </div>
+
+        <!-- Certifications Section -->
+        <div id="certifications-section">
+            <label>Certifications:</label>
+            <div class="dynamic-section">
+                <input type="text" name="certifications[]" placeholder="Certification Title" required>
+                <input type="text" name="certification_institution[]" placeholder="Institution" required>
+            </div>
+        </div>
+        
+        <!-- Personal Description-->
+        <div id="Description-section"></div>
+        <label>Personal Description:</label>
+        <div class="dynamic-section">
+            <input type ="text" name="personal_description" placeholder="Describe about yourself" required>
+        </div>
+
+        <label for="skills">Skills:</label>
+        <input type="text" id="skills" name="skills" required>
+
+        <br><button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personality Questionnaire</title>
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+    <h2>Personality Questionnaire</h2>
+    <form action="{{ url_for('personality_questionnaire') }}" method="POST">
+        {% for trait, questions in questions.items() %}
+            <h3>{{ trait }}</h3>
+            {% for code, question in questions.items() %}
+                <label for="{{ code }}">{{ question }}</label><br>
+                <input type="radio" id="{{ code }}_1" name="{{ code }}" value="1" required> Strongly Disagree
+                <input type="radio" id="{{ code }}_2" name="{{ code }}" value="2"> Disagree
+                <input type="radio" id="{{ code }}_3" name="{{ code }}" value="3"> Neutral
+                <input type="radio" id="{{ code }}_4" name="{{ code }}" value="4"> Agree
+                <input type="radio" id="{{ code }}_5" name="{{ code }}" value="5"> Strongly Agree<br><br>
+            {% endfor %}
+        {% endfor %}
+        <button type="submit">Submit Questionnaire</button>
+    </form>
+</body>
+</html>

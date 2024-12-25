@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Details</title>
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+    <h1>Candidate Details</h1>
+    
+    <h2>Personal Information</h2>
+    <p>Name: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.cv.phone }}</p>
+    <p>Address: {{ user.cv.address }}</p>
+    <p>Degree: {{ user.cv.degree }}</p>
+
+    <h2>Personality Responses</h2>
+    <ul>
+        {% for key, value in user.responses.items() %}
+            <li>{{ key }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Predicted Personality Traits</h2>
+    <ul>
+        {% for trait, value in user.predicted_personality.items() %}
+            <li>{{ trait }}: {{ value }}</li>
+        {% endfor %}
+    </ul>
+    
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
